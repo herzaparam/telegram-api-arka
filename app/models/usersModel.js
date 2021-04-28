@@ -57,7 +57,7 @@ exports.createUsers = (data) => {
           connection.query("INSERT INTO user SET ?", data, (err, result) => {
             if (!err) {
               connection.query(
-                "SELECT * FROM user WHERE id = ?",
+                "SELECT * FROM user WHERE userID = ?",
                 result.insertId,
                 (err, result) => {
                   if (!err) {
@@ -196,7 +196,6 @@ exports.createUsersToken = (data) => {
 };
 
 exports.createToken = (data) => {
-
   return new Promise((resolve, reject) => {
     connection.query("INSERT INTO access_token SET ?", data, (err, result) => {
       if (!err) {

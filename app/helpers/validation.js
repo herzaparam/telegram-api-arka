@@ -5,7 +5,7 @@ module.exports = {
     const schema = Joi.object({
       email: Joi.string().email().required(),
       password: Joi.string().min(8).required().strict(),
-      username: Joi.string().required(),
+      name: Joi.string().required(),
     });
     return schema.validate(users);
   },

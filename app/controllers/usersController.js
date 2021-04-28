@@ -8,6 +8,7 @@ const mail = require("../helpers/sendEmail");
 const hash = require("../helpers/hashPassword");
 const validation = require("../helpers/validation");
 const secretKey = process.env.SECRET_KEY;
+const { v4: uuidv4 } = require('uuid');
 
 exports.findAll = (req, res) => {
   const { page, perPage } = req.query;
@@ -94,7 +95,7 @@ exports.findId = (req, res) => {
 };
 
 exports.create = async (req, res) => {
-
+  
   let image;
   if (!req.file) {
     image = "images\\avatar.png";
@@ -109,12 +110,13 @@ exports.create = async (req, res) => {
     return;
   }
 
-  const { email, password, username } = req.body;
-
+  const { email, password, name } = req.body;
+  
   const data = {
+    userID : uuidv4(),
     email,
     password: await hash.hashPassword(password),
-    username,
+    name,
     isActive: false,
     image,
   };
@@ -125,15 +127,11 @@ exports.create = async (req, res) => {
         helper.printError(res, 400, "Error creating users");
         return;
       }
-
       delete result[0].password;
       const payload = {
-        id: result[0].id,
+        userID: result[0].userID,
         email: result[0].email,
-        phone_number: result[0].phone_number,
-        username: result[0].username,
-        first_name: result[0].first_name,
-        last_name: result[0].last_name,
+        name: result[0].name,
       };
       jwt.sign(payload, secretKey, { expiresIn: "24h" }, async (err, token) => {
         const data = {
@@ -336,7 +334,7 @@ exports.login = (req, res) => {
           accessToken: token,
           ipAddress: ip.address(),
         };
-        await usersModel.createToken(data);
+        // await usersModel.createToken(data);
         helper.printSuccess(res, 200, "Login successfull", result);
       });
     })
