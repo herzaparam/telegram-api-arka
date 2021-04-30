@@ -12,6 +12,9 @@ module.exports = {
   validationUsersUpdate: (users) => {
     const schema = Joi.object({
       username: Joi.string().required(),
+      name: Joi.string().required(),
+      bio: Joi.string().required(),
+      phone_number: Joi.number().required()
     });
     return schema.validate(users);
   },

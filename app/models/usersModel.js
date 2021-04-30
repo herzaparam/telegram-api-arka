@@ -35,7 +35,7 @@ exports.getAllUsers = (idSender, queryPage, queryPerPage, keyword) => {
 
 exports.getUsersById = (id) => {
   return new Promise((resolve, reject) => {
-    connection.query("SELECT * FROM user WHERE id = ?", id, (err, result) => {
+    connection.query("SELECT * FROM user WHERE userID = ?", id, (err, result) => {
       if (!err) {
         resolve(result);
       } else {
@@ -79,7 +79,7 @@ exports.createUsers = (data) => {
 
 exports.updateUsers = (id, data) => {
   return new Promise((resolve, reject) => {
-    connection.query(`UPDATE user SET username = ?, image = ? WHERE id = ?`, [data.username, data.image, id],
+    connection.query(`UPDATE user SET name = ?, username = ?, image = ?, bio = ?, phone_number = ? WHERE userID = ?`, [data.name, data.username, data.image, data.bio, data.phone_number, id],
       (err, result) => {
         if (!err) {
           resolve(result)
@@ -130,7 +130,7 @@ exports.deleteUsers = (id) => {
 
 exports.findUser = (id, message) => {
   return new Promise((resolve, reject) => {
-    connection.query("SELECT * FROM user WHERE id = ?", id, (err, result) => {
+    connection.query("SELECT * FROM user WHERE userID = ?", id, (err, result) => {
       if (!err) {
         if (result.length == 1) {
           resolve(result);
@@ -359,16 +359,16 @@ exports.insertPhone = (id, phoneNumber) => {
       })
   })
 };
-exports.createPin = (pin, idSender) =>{
+exports.createPin = (pin, idSender) => {
   console.log(pin, idSender);
-  return new Promise((resolve,reject)=>{
-    connection.query(`UPDATE user SET pin = ? WHERE id = ?`, [pin, idSender], 
-    (err,result)=>{
-      if(!err){
-        resolve(result)
-      }else{
-        reject(new Error("internal server error, can't input pin"))
-      }
-    })
+  return new Promise((resolve, reject) => {
+    connection.query(`UPDATE user SET pin = ? WHERE id = ?`, [pin, idSender],
+      (err, result) => {
+        if (!err) {
+          resolve(result)
+        } else {
+          reject(new Error("internal server error, can't input pin"))
+        }
+      })
   })
 };

@@ -62,7 +62,7 @@ exports.getOne = (req, res) => {
     });
 };
 exports.findOne = (req, res) => {
-  const id = req.auth.id;
+  const id = req.auth.userID;
   usersModel
     .getUsersById(id)
     .then((result) => {
@@ -206,20 +206,27 @@ exports.verify = async (req, res) => {
 };
 
 exports.update = async (req, res) => {
-  const id = req.params.id;
+  const id = req.auth.userID;
   const validate = validation.validationUsersUpdate(req.body);
 
   if (validate.error) {
     helper.printError(res, 400, validate.error.details[0].message);
     return;
   }
-
   const {
+    name,
     username,
+    bio,
+    phone_number,
+    image
   } = req.body;
 
   const data = {
-    username
+    name,
+    username,
+    bio,
+    phone_number,
+    image
   };
   usersModel
     .findUser(id, "update")
@@ -319,18 +326,19 @@ exports.login = (req, res) => {
     .then((result) => {
       delete result.password;
       const payload = {
-        id: result.id,
+        userID: result.userID,
         email: result.email,
         phone_number: result.phone_number,
         username: result.username,
-        first_name: result.first_name,
+        name: result.name,
+        bio: result.bio,
         last_name: result.last_name,
         pin: result.pin,
       };
       jwt.sign(payload, secretKey, { expiresIn: "24h" }, async (err, token) => {
         result.token = token;
         const data = {
-          idUser: result.id,
+          userID: result.userID,
           accessToken: token,
           ipAddress: ip.address(),
         };
@@ -359,12 +367,11 @@ exports.forgotPassword = (req, res) => {
       }
       delete result[0].password;
       const payload = {
-        id: result[0].id,
+        userID: result[0].userID,
         email: result[0].email,
-        pin: result[0].pin,
-        username: result[0].username,
-        first_name: result[0].first_name,
-        last_name: result[0].last_name,
+        name: result[0].name,
+        phone_number: result[0].phone_number,
+       
       };
       jwt.sign(payload, secretKey, { expiresIn: "24h" }, async (err, token) => {
         const data = {
@@ -373,6 +380,7 @@ exports.forgotPassword = (req, res) => {
         };
         await usersModel.createUsersToken(data);
         await mail.send(result[0].email, token, "forgot");
+        await usersModel.deleteToken(email);
         helper.printSuccess(
           res,
           200,
@@ -388,9 +396,8 @@ exports.forgotPassword = (req, res) => {
 
 exports.resetPassword = async (req, res) => {
 
-  const email = req.body.email;
+  const email = req.query.email;
   const password = req.body.password;
-
   try {
     const user = await usersModel.findEmail(email);
     if (user < 1) {
@@ -400,7 +407,6 @@ exports.resetPassword = async (req, res) => {
       const data = await hash.hashPassword(password);
       const result = await usersModel.setPassword(data, email);
       if (!data) {
-        console.log('jalans');
         helper.printError(res, 400, "Content cannot be empty");
         return;
       }
@@ -410,7 +416,6 @@ exports.resetPassword = async (req, res) => {
         "Password has been changed!",
         result
       );
-      console.log('jalan');
     }
   } catch (err) {
     helper.printError(res, 500, err.message);

@@ -15,7 +15,7 @@ router
   .post("/auth/forgot-password", usersController.forgotPassword)
   .put("/insert-pin", auth.verification(), usersController.createPin)
   .put("/auth/reset-password", usersController.resetPassword)
-  .put("/update-profile/:id", multer.uploadImage.single("image"), usersController.update)
+  .put("/update-profile", multer.uploadImage.single("image"), auth.verification(), usersController.update)
   .put("/edit-password/:id", usersController.updatePassword)
   .put("/del/phonenumber", auth.verification(), usersController.deletePhone)
   .put("/insert/phonenumber", auth.verification(), usersController.insertPhone)
