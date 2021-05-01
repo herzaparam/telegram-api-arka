@@ -12,11 +12,11 @@ const { v4: uuidv4 } = require('uuid');
 
 exports.findAll = (req, res) => {
   const { page, perPage } = req.query;
-  const idSender = req.auth.id
+  const userID = req.auth.userID
   const keyword = req.query.keyword ? req.query.keyword : "";
 
   usersModel
-    .getAllUsers(idSender, page, perPage, keyword)
+    .getAllUsers(userID, page, perPage, keyword)
     .then(([totalData, totalPage, result, page, perPage]) => {
       if (result < 1) {
         helper.printError(res, 400, "Users not found");

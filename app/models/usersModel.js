@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const connection = require("../configs/dbConfig");
 
-exports.getAllUsers = (idSender, queryPage, queryPerPage, keyword) => {
+exports.getAllUsers = (userID, queryPage, queryPerPage, keyword) => {
   return new Promise((resolve, reject) => {
     connection.query(
       `SELECT COUNT(*) AS totalData FROM user WHERE username LIKE ?  `,
@@ -18,8 +18,8 @@ exports.getAllUsers = (idSender, queryPage, queryPerPage, keyword) => {
         }
         const firstData = perPage * page - perPage;
         connection.query(
-          `SELECT * FROM user WHERE username LIKE ? AND NOT id = ? LIMIT ?, ?`,
-          [`%${keyword}%`, idSender, firstData, perPage],
+          `SELECT * FROM user WHERE name LIKE ? AND NOT userID = ? LIMIT ?, ?`,
+          [`%${keyword}%`, userID, firstData, perPage],
           (err, result) => {
             if (err) {
               reject(new Error("Internal server error"));

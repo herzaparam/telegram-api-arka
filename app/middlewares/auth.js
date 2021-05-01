@@ -5,6 +5,7 @@ const secretKey = process.env.SECRET_KEY;
 exports.verification = () => {
   return function (req, res, next) {
     const authorization = req.headers.authorization;
+    
     if (authorization) {
       const token = authorization.split(" ")[1];
       jwt.verify(token, secretKey, (err, decoded) => {
