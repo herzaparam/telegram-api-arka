@@ -31,26 +31,6 @@ const io = socketio(server, {
   }
 })
 
-// //connected with user
-// io.on('connection', (socket)=>{
-//   console.log(`client with id : ${socket.id} has been join `);
-
-
-
-//   socket.on('sendMessage', async(data, callback)=>{
-//     const date = new Date()
-//     const timeNow = moment(date).format('LT')
-//     const dateNow = moment().format('LL')
-//     const dataMessage = {...data, createdAt: timeNow, date: dateNow}
-//     io.to(`user:${data.idReceiver}`).emit('receiveMessage', dataMessage)
-//     console.log(dataMessage);
-    
-//   })
-
-//   socket.on('disconnect', reason =>{
-//     console.log(`client disconnect ${reason}`);
-//   })
-// });
 
 io.on("connection", (socket) => {
   console.log("client terhubung dengan id " + socket.id);
@@ -67,7 +47,6 @@ io.on("connection", (socket) => {
     io.to(`user:${dataMessage.idReceiver}`).emit('receiveMessage', dataMessage)
     callback(dataMessage)
   })
-
 
 
   socket.on("disconnect", reason => {
