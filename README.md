@@ -1,15 +1,12 @@
-# Bohdan Developer Coffee-Backend
-Backend for Coffee Application
-
-## API Documentation
-> You can check Postman API Documentation [Here](https://documenter.getpostman.com/view/13256965/TzCTZkQo)
+# Telegram back end
+Back end repositories for telegram-app. 
 
 ## Application Instalation
 1. Make sure you already have Redis installed on your machine
-2. Clone coffee-shop-backend Repository
+2. Clone telegram-api-arka Repository
 3. Install Required NPM Packages 
    > `npm install`
-4. Create database named `coffee-shop` and import `coffee-shop.sql` from this project folder
+4. Create database named `telegram` and import `telegram.sql` from this project folder
 5. Create `.env` files with this value
    > - PORT = (Your backend port number, ex:8080)
    > - HOST = localhost
@@ -21,24 +18,15 @@ Backend for Coffee Application
    > - EMAIL_USER = (Your own email, ex: user@gmail.com)
    > - EMAIL_PASS = (Your email password)
    > - SECRET_KEY = (Your own JWT key)
-   > - REDIS_PORT = (Your redis port, ex: 6379)
-6. Start Redis Server
-   > `redis-server`
+
 7. Start Application
    > `npm start`
 
 ## Features
 - JWT Authentication
-- Multilevel Authorization (Admin and Customer)
 - Nodemailer For Mailer
 - Upload Image Multer
-- CRUD Products
-- CRUD Orders
 - CRUD Users
-- Redis Server
-
-## Frontend
-Frontend dari aplikasi ini dapat dicek pada tautan berikut [coffee-shop-frontend](https://github.com/bohdan-28/coffee-shop-frontend)
 
 ## NPM Packages Used
 - [Bcrypt](https://www.npmjs.com/package/bcrypt)
@@ -56,5 +44,13 @@ Frontend dari aplikasi ini dapat dicek pada tautan berikut [coffee-shop-frontend
 - [nodemailer](https://www.npmjs.com/package/nodemailer)
 - [nodemon](https://www.npmjs.com/package/nodemon)
 - [redis](https://www.npmjs.com/package/redis)
+
+### Deployment
+
+visit the website here: [https://telegram-app-arka.netlify.app/](https://telegram-app-arka.netlify.app/)
+
+## Also
+you can check the front end repositories here : [telegram-app-arka](https://github.com/herzaparam/telegram-app-arka)
+
 
 
