@@ -46,6 +46,7 @@ io.on("connection", (socket) => {
     const dataMessage = { ...data, time: timeNow }
     io.to(`user:${dataMessage.idReceiver}`).emit('receiveMessage', dataMessage)
     callback(dataMessage)
+    
   })
 
 
