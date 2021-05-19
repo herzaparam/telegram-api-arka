@@ -25,8 +25,8 @@ Developed with express js and integrated to mysql database.
 
 ## Getting Started
 ### Prerequisites
-[node.js](https://nodejs.org/en/download/)
-[Postman](https://www.getpostman.com/) for testing
+[node.js](https://nodejs.org/en/download/)<br>
+[Postman](https://www.getpostman.com/) for testing<br>
 [Database](database-example.sql)
 
 ### Installing
