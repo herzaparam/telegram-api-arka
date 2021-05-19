@@ -41,10 +41,11 @@ io.on("connection", (socket) => {
 
   socket.on('sendMessage', (data, callback) => {
     // messageModels.insetMessage(data)
+    
     const date = new Date()
     const timeNow = moment(date).format('LT')
     const dataMessage = { ...data, time: timeNow }
-    io.to(`user:${dataMessage.idReceiver}`).emit('receiveMessage', dataMessage)
+    io.to(`user:${dataMessage.id_receiver}`).emit('receiveMessage', dataMessage)
     callback(dataMessage)
     
   })

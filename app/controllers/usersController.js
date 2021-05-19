@@ -228,6 +228,7 @@ exports.update = async (req, res) => {
     phone_number,
     image
   };
+  
   usersModel
     .findUser(id, "update")
     .then((result) => {
