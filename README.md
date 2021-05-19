@@ -1,46 +1,13 @@
-# Bohdan Developer Coffee-Backend
-Backend for Coffee Application
+<h1 align="center">Telegram API</h1>
 
-## API Documentation
-> You can check Postman API Documentation [Here](https://documenter.getpostman.com/view/13256965/TzCTZkQo)
+Telegram app's API which handle register, login, forgot password, mailer,upload image multer, history chat, and delete chat. 
+Developed with express js and integrated to mysql database. 
 
-## Application Instalation
-1. Make sure you already have Redis installed on your machine
-2. Clone coffee-shop-backend Repository
-3. Install Required NPM Packages 
-   > `npm install`
-4. Create database named `coffee-shop` and import `coffee-shop.sql` from this project folder
-5. Create `.env` files with this value
-   > - PORT = (Your backend port number, ex:8080)
-   > - HOST = localhost
-   > - PORT_FRONTEND = (Your frontend port number, ex:3000)
-   > - DB_HOST = localhost
-   > - DB_USERNAME = (Your database user)
-   > - DB_PASSWORD = (Your database password)
-   > - DB_NAME = coffee-shop
-   > - EMAIL_USER = (Your own email, ex: user@gmail.com)
-   > - EMAIL_PASS = (Your email password)
-   > - SECRET_KEY = (Your own JWT key)
-   > - REDIS_PORT = (Your redis port, ex: 6379)
-6. Start Redis Server
-   > `redis-server`
-7. Start Application
-   > `npm start`
+## Built With
+* [Node.js](https://nodejs.org/en/)
+* [Express.js](https://expressjs.com/)
 
-## Features
-- JWT Authentication
-- Multilevel Authorization (Admin and Customer)
-- Nodemailer For Mailer
-- Upload Image Multer
-- CRUD Products
-- CRUD Orders
-- CRUD Users
-- Redis Server
-
-## Frontend
-Frontend dari aplikasi ini dapat dicek pada tautan berikut [coffee-shop-frontend](https://github.com/bohdan-28/coffee-shop-frontend)
-
-## NPM Packages Used
+### Modules and Packages
 - [Bcrypt](https://www.npmjs.com/package/bcrypt)
 - [Cors](https://www.npmjs.com/package/cors)
 - [Dotenv](https://www.npmjs.com/package/dotenv)
@@ -55,6 +22,59 @@ Frontend dari aplikasi ini dapat dicek pada tautan berikut [coffee-shop-frontend
 - [ip](https://www.npmjs.com/package/ip)
 - [nodemailer](https://www.npmjs.com/package/nodemailer)
 - [nodemon](https://www.npmjs.com/package/nodemon)
-- [redis](https://www.npmjs.com/package/redis)
 
+## Getting Started
+### Prerequisites
+[node.js](https://nodejs.org/en/download/)
+[Postman](https://www.getpostman.com/) for testing
+[Database](database-example.sql)
+
+### Installing
+
+Clone this repository and then use the package manager npm to install dependencies.
+```
+npm install
+```
+## Setup .env example
+
+Create .env file in your root project folder.
+
+```env
+
+PORT="your port"
+DB_HOST = localhost
+DB_USER = root
+DB_NAME = "your database name"
+SECRET_KEY = "your secret key"
+USER_EMAIL = "your email"
+PASSWORD_EMAIL = "your email's password"
+
+```
+## Run the app
+
+Development mode
+
+```bash
+npm run dev
+```
+
+Deploy mode
+
+```bash
+npm start
+```
+
+## REST API
+
+[![run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/14783281/TzRYe5ji)
+
+
+## Front end Repositories
+also you can check our front end repositories [here](https://github.com/herzaparam/telegram-app-arka)
+
+### Contributor
+[Herza Paramayudhanto](https://github.com/herzaparam)
+
+contact :
+herzaparam@gmail.com
 
