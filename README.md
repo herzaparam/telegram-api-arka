@@ -1,34 +1,13 @@
-# Telegram back end
-Back end repositories for telegram-app. 
+<h1 align="center">Telegram API</h1>
 
-## Application Instalation
-1. Make sure you already have Redis installed on your machine
-2. Clone telegram-api-arka Repository
-3. Install Required NPM Packages 
-   > `npm install`
-4. Create database named `telegram` and import `telegram.sql` from this project folder
-5. Create `.env` files with this value
-   > - PORT = (Your backend port number, ex:8080)
-   > - HOST = localhost
-   > - PORT_FRONTEND = (Your frontend port number, ex:3000)
-   > - DB_HOST = localhost
-   > - DB_USERNAME = (Your database user)
-   > - DB_PASSWORD = (Your database password)
-   > - DB_NAME = coffee-shop
-   > - EMAIL_USER = (Your own email, ex: user@gmail.com)
-   > - EMAIL_PASS = (Your email password)
-   > - SECRET_KEY = (Your own JWT key)
+Telegram app's API which handle register, login, forgot password, mailer,upload image multer, history chat, and delete chat. 
+Developed with express js and integrated to mysql database. 
 
-7. Start Application
-   > `npm start`
+## Built With
+* [Node.js](https://nodejs.org/en/)
+* [Express.js](https://expressjs.com/)
 
-## Features
-- JWT Authentication
-- Nodemailer For Mailer
-- Upload Image Multer
-- CRUD Users
-
-## NPM Packages Used
+### Modules and Packages
 - [Bcrypt](https://www.npmjs.com/package/bcrypt)
 - [Cors](https://www.npmjs.com/package/cors)
 - [Dotenv](https://www.npmjs.com/package/dotenv)
@@ -43,14 +22,59 @@ Back end repositories for telegram-app.
 - [ip](https://www.npmjs.com/package/ip)
 - [nodemailer](https://www.npmjs.com/package/nodemailer)
 - [nodemon](https://www.npmjs.com/package/nodemon)
-- [redis](https://www.npmjs.com/package/redis)
 
-### Deployment
+## Getting Started
+### Prerequisites
+[node.js](https://nodejs.org/en/download/)
+[Postman](https://www.getpostman.com/) for testing
+[Database](database-example.sql)
 
-visit the website here: [https://telegram-app-arka.netlify.app/](https://telegram-app-arka.netlify.app/)
+### Installing
 
-## Also
-you can check the front end repositories here : [telegram-app-arka](https://github.com/herzaparam/telegram-app-arka)
+Clone this repository and then use the package manager npm to install dependencies.
+```
+npm install
+```
+## Setup .env example
+
+Create .env file in your root project folder.
+
+```env
+
+PORT="your port"
+DB_HOST = localhost
+DB_USER = root
+DB_NAME = "your database name"
+SECRET_KEY = "your secret key"
+USER_EMAIL = "your email"
+PASSWORD_EMAIL = "your email's password"
+
+```
+## Run the app
+
+Development mode
+
+```bash
+npm run dev
+```
+
+Deploy mode
+
+```bash
+npm start
+```
+
+## REST API
+
+[![run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/14783281/TzRYe5ji)
 
 
+## Front end Repositories
+also you can check our front end repositories [here](https://github.com/herzaparam/telegram-app-arka)
+
+### Contributor
+[Herza Paramayudhanto](https://github.com/herzaparam)
+
+contact :
+herzaparam@gmail.com
 
