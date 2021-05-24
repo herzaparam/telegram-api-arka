@@ -1,3 +1,13 @@
+<div align="center">
+  <img width="300" src="https://github.com/herzaparam/telegram-app-arka/blob/master/src/assets/image/telegram%20logo.png" alt="next.js logo">
+ </div> 
+<hr>
+ <div align="center">
+  <img width="100" src="https://github.com/herzaparam/zwallet-arka/blob/main/public/nodejs.png" alt="node js">
+  <img width="100" src="https://github.com/herzaparam/zwallet-arka/blob/main/public/expresslogo.png" alt="express js">
+</div>
+<hr>
+<br>
 <h1 align="center">Telegram API</h1>
 
 Telegram app's API which handle register, login, forgot password, mailer,upload image multer, history chat, and delete chat. 
