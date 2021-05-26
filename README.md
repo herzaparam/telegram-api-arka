@@ -1,3 +1,13 @@
+<div align="center">
+  <img width="300" src="https://github.com/herzaparam/telegram-app-arka/blob/master/src/assets/image/telegram%20logo.png" alt="next.js logo">
+ </div> 
+<hr>
+ <div align="center">
+  <img width="100" src="https://github.com/herzaparam/zwallet-arka/blob/main/public/nodejs.png" alt="node js">
+  <img width="100" src="https://github.com/herzaparam/zwallet-arka/blob/main/public/expresslogo.png" alt="express js">
+</div>
+<hr>
+<br>
 <h1 align="center">Telegram API</h1>
 
 Telegram app's API which handle register, login, forgot password, mailer,upload image multer, history chat, and delete chat. 
@@ -68,6 +78,8 @@ npm start
 
 [![run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/14783281/TzRYe5ji)
 
+## Publication
+you can visit our website here : [https://telegram-app-arka.netlify.app/](https://telegram-app-arka.netlify.app/)
 
 ## Front end Repositories
 also you can check our front end repositories [here](https://github.com/herzaparam/telegram-app-arka)
