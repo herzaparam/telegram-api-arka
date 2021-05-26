@@ -20,7 +20,7 @@ const send = (destination, token, type) => {
   return new Promise(async (resolve, reject) => {
     try {
       if (type === "verify") {
-        console.log('jalan');
+        console.log('jalan', email);
         const info = await transporter.sendMail({
           from: email,
           to: destination,
