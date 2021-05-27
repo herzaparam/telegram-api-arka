@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 const smtpTransport = require("nodemailer-smtp-transport");
 const host = process.env.HOST;
 const port = process.env.PORT_FRONTEND;
-const link = `https://telegram-app-arka.netlify.app/`;
+const link = `https://telegram-app-arka.netlify.app`;
 const email = process.env.EMAIL_USER;
 const password = process.env.EMAIL_PASS;
 
