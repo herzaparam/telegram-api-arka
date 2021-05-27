@@ -208,7 +208,7 @@ exports.verify = async (req, res) => {
 exports.update = async (req, res) => {
   const id = req.auth.userID;
   const validate = validation.validationUsersUpdate(req.body);
-
+  
   if (validate.error) {
     helper.printError(res, 400, validate.error.details[0].message);
     return;
@@ -217,8 +217,7 @@ exports.update = async (req, res) => {
     name,
     username,
     bio,
-    phone_number,
-    image
+    phone_number
   } = req.body;
 
   const data = {
@@ -226,7 +225,6 @@ exports.update = async (req, res) => {
     username,
     bio,
     phone_number,
-    image
   };
   
   usersModel
@@ -246,6 +244,7 @@ exports.update = async (req, res) => {
       return usersModel.updateUsers(id, data);
     })
     .then((result) => {
+      delete result[0].password;
       helper.printSuccess(res, 200, "Users has been updated", result);
     })
     .catch((err) => {
